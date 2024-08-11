@@ -3,12 +3,10 @@ package hello.hello_spring.repository;
 
 import hello.hello_spring.domain.Member;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
-public class MemoryMemberRopository implements MemberRepository {
+
+public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequnce = 0L;
@@ -34,6 +32,10 @@ public class MemoryMemberRopository implements MemberRepository {
 
     @Override
     public List<Member> findAll() {
-        return List.of();
+        return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
